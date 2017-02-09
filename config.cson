@@ -1,0 +1,43 @@
+"*":
+  "atom-terminal":
+    app: "/usr/bin/bash"
+  "autocomplete-python": {}
+  autosave:
+    enabled: true
+  core:
+    autoHideMenuBar: true
+    projectHome: "/home/jonas/Projects"
+    telemetryConsent: "limited"
+    themes: [
+      "atom-material-ui"
+      "atom-dark-syntax"
+    ]
+  editor:
+    fontSize: 11
+  "exception-reporting":
+    userId: "d174ba51-7c01-e733-00b4-3c33742e1215"
+  "file-icons": {}
+  linter:
+    errorPanelHeight: 156
+    ignoreVCSIgnoredFiles: false
+  "linter-flake8":
+    executablePath: "/usr/bin/flake8"
+    projectConfigFile: [
+      ".flake8"
+    ]
+  minimap:
+    plugins:
+      "git-diff": true
+      "git-diffDecorationsZIndex": 0
+      "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
+  "platformio-ide-terminal":
+    core: {}
+  "terminal-plus":
+    core:
+      shell: "/usr/bin/bash"
+      workingDirectory: "Active File"
+    toggles:
+      autoClose: true
+  welcome:
+    showOnStartup: false
