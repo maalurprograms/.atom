@@ -17,6 +17,7 @@
   "exception-reporting":
     userId: "d174ba51-7c01-e733-00b4-3c33742e1215"
   "file-icons": {}
+  "keybinding-cheatsheet": {}
   linter:
     errorPanelHeight: 156
     ignoreVCSIgnoredFiles: false

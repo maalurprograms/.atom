@@ -2,39 +2,39 @@
   "_args": [
     [
       {
-        "raw": "/tmp/d-11719-12784-1jid638.66c4zvkj4i/package.tgz",
+        "raw": "/tmp/d-117110-22215-1lnyyd3.xcak3p7gb9/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/tmp/d-11719-12784-1jid638.66c4zvkj4i/package.tgz",
-        "spec": "/tmp/d-11719-12784-1jid638.66c4zvkj4i/package.tgz",
+        "rawSpec": "/tmp/d-117110-22215-1lnyyd3.xcak3p7gb9/package.tgz",
+        "spec": "/tmp/d-117110-22215-1lnyyd3.xcak3p7gb9/package.tgz",
         "type": "local"
       },
-      "/tmp/apm-install-dir-11719-12784-qtuhm8.8bf39pb9"
+      "/tmp/apm-install-dir-117110-22215-1ncbnuk.nsoamj9k9"
     ]
   ],
-  "_from": "../d-11719-12784-1jid638.66c4zvkj4i/package.tgz",
-  "_id": "autocomplete-python@1.8.43",
+  "_from": "../d-117110-22215-1lnyyd3.xcak3p7gb9/package.tgz",
+  "_id": "autocomplete-python@1.8.49",
   "_inCache": true,
   "_location": "/autocomplete-python",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/tmp/d-11719-12784-1jid638.66c4zvkj4i/package.tgz",
+    "raw": "/tmp/d-117110-22215-1lnyyd3.xcak3p7gb9/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/tmp/d-11719-12784-1jid638.66c4zvkj4i/package.tgz",
-    "spec": "/tmp/d-11719-12784-1jid638.66c4zvkj4i/package.tgz",
+    "rawSpec": "/tmp/d-117110-22215-1lnyyd3.xcak3p7gb9/package.tgz",
+    "spec": "/tmp/d-117110-22215-1lnyyd3.xcak3p7gb9/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-11719-12784-1jid638.66c4zvkj4i/package.tgz",
-  "_shasum": "88462666ad51168cb4ef29e46a002451e944d11a",
+  "_resolved": "file:../d-117110-22215-1lnyyd3.xcak3p7gb9/package.tgz",
+  "_shasum": "1f058c8d6e034f718dc8b6cff4916f6e37a0d89e",
   "_shrinkwrap": null,
-  "_spec": "/tmp/d-11719-12784-1jid638.66c4zvkj4i/package.tgz",
-  "_where": "/tmp/apm-install-dir-11719-12784-qtuhm8.8bf39pb9",
+  "_spec": "/tmp/d-117110-22215-1lnyyd3.xcak3p7gb9/package.tgz",
+  "_where": "/tmp/apm-install-dir-117110-22215-1ncbnuk.nsoamj9k9",
   "bugs": {
     "url": "https://github.com/autocomplete-python/autocomplete-python/issues"
   },
@@ -59,7 +59,7 @@
     "atom-slick": "^2.0.0",
     "atom-space-pen-views": "~2.1.0",
     "fuzzaldrin-plus": "^0.3.1",
-    "kite-installer": "^0.11.10",
+    "kite-installer": "^0.12.6",
     "mixpanel": "^0.5.0",
     "selector-kit": "^0.1",
     "space-pen": "^5.1.2",
@@ -99,7 +99,7 @@
     "type": "git",
     "url": "git+https://github.com/autocomplete-python/autocomplete-python.git"
   },
-  "version": "1.8.43",
+  "version": "1.8.49",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
@@ -175,7 +175,7 @@
       },
       {
         "name": "kite-installer",
-        "version": "0.11.11",
+        "version": "0.12.6",
         "path": "node_modules/kite-installer/lib/index.js"
       },
       {
@@ -785,6 +785,7 @@
         "node_modules/kite-installer/lib/index.js",
         "node_modules/kite-installer/lib/installer.js",
         "node_modules/kite-installer/lib/kite-error.js",
+        "node_modules/kite-installer/lib/logger.js",
         "node_modules/kite-installer/lib/models/installation.js",
         "node_modules/kite-installer/lib/state-controller.js",
         "node_modules/kite-installer/lib/support/no-support.js",
@@ -846,7 +847,7 @@
           "atom-slick": "^2.0.0",
           "atom-space-pen-views": "~2.1.0",
           "fuzzaldrin-plus": "^0.3.1",
-          "kite-installer": "^0.11.10",
+          "kite-installer": "^0.12.6",
           "mixpanel": "^0.5.0",
           "selector-kit": "^0.1",
           "space-pen": "^5.1.2",

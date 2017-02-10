@@ -1,6 +1,6 @@
 {CompositeDisposable, Emitter} = require 'atom'
 
-Metrics = null
+[Metrics, Logger] = []
 
 window.DEBUG = false
 module.exports =
@@ -147,6 +147,7 @@ module.exports =
       Installation,
       Installer,
       Metrics,
+      Logger,
       StateController
     } = require 'kite-installer'
     AccountManager.initClient 'alpha.kite.com', -1, true
@@ -244,6 +245,10 @@ module.exports =
     promises = [atom.packages.activatePackage('autocomplete-plus')]
 
     if atom.packages.getLoadedPackage('kite')?
+
+      @disposables.add atom.config.observe 'kite.loggingLevel', (level) ->
+        Logger.LEVEL = Logger.LEVELS[(level ? 'info').toUpperCase()]
+
       promises.push(atom.packages.activatePackage('kite'))
       Metrics.Tracker.name = "atom kite+acp"
 
@@ -295,28 +300,47 @@ module.exports =
       if @kiteProvider?
         if @lastKiteSuggestions?
           if suggestion in @lastKiteSuggestions
-            if @hasSameSuggestion(suggestion, @provider.lastSuggestions)
-              @track 'used completion returned by Kite but also returned by Jedi'
+            altSuggestion = @hasSameSuggestion(suggestion, @provider.lastSuggestions)
+            if altSuggestion?
+              @track 'used completion returned by Kite but also returned by Jedi', {
+                kiteHasDocumentation: @hasDocumentation(suggestion)
+                jediHasDocumentation: @hasDocumentation(altSuggestion)
+              }
             else
-              @track 'used completion returned by Kite but not Jedi'
+              @track 'used completion returned by Kite but not Jedi', {
+                kiteHasDocumentation: @hasDocumentation(suggestion)
+              }
           else if suggestion in @provider.lastSuggestions
-            if @hasSameSuggestion(suggestion, @lastKiteSuggestions)
-              @track 'used completion returned by Jedi but also returned by Kite'
+            altSuggestion = @hasSameSuggestion(suggestion, @lastKiteSuggestions)
+            if altSuggestion?
+              @track 'used completion returned by Jedi but also returned by Kite', {
+                kiteHasDocumentation: @hasDocumentation(altSuggestion)
+                jediHasDocumentation: @hasDocumentation(suggestion)
+              }
             else
-              @track 'used completion returned by Jedi but not Kite (whitelisted filepath)'
+              @track 'used completion returned by Jedi but not Kite (whitelisted filepath)', {
+                jediHasDocumentation: @hasDocumentation(suggestion)
+              }
           else
             @track 'used completion from neither Kite nor Jedi'
         else
-          @track 'used completion returned by Jedi but not Kite (not-whitelisted filepath)'
+          @track 'used completion returned by Jedi but not Kite (not-whitelisted filepath)', {
+            jediHasDocumentation: @hasDocumentation(suggestion)
+          }
       else
         if suggestion in @provider.lastSuggestions
-          @track 'used completion returned by Jedi'
+          @track 'used completion returned by Jedi', {
+            jediHasDocumentation: @hasDocumentation(suggestion)
+          }
         else
           @track 'used completion not returned by Jedi'
 
   hasSameSuggestion: (suggestion, suggestions) ->
-    suggestions.some (s) -> s.text is suggestion.text
+    suggestions.filter((s) -> s.text is suggestion.text)[0]
+
+  hasDocumentation: (suggestion) ->
+    (suggestion.description? and suggestion.description isnt '') or
+    (suggestion.descriptionMarkdown? and suggestion.descriptionMarkdown isnt '')
 
   track: (msg, data) ->
-    console.log(msg)
     Metrics.Tracker.trackEvent msg, data
