@@ -161,6 +161,10 @@ module.exports =
 
     Metrics.Tracker.name = "atom acp"
 
+    atom.packages.onDidActivatePackage (pkg) ->
+      if pkg.name is 'kite'
+        Metrics.Tracker.name = "atom kite+acp"
+
     checkKiteInstallation = () =>
       if not atom.config.get 'autocomplete-python.useKite'
         return
@@ -174,11 +178,11 @@ module.exports =
         title = "Choose a autocomplete-python engine"
         @installation = new Installation variant, title
         @installation.accountCreated(() =>
-          Metrics.Tracker.trackEvent "account created"
+          @track "account created"
           atom.config.set 'autocomplete-python.useKite', true
         )
         @installation.flowSkipped(() =>
-          Metrics.Tracker.trackEvent "flow aborted"
+          @track "flow aborted"
           atom.config.set 'autocomplete-python.useKite', false
         )
         installer = new Installer(atom.project.getPaths())
@@ -186,7 +190,7 @@ module.exports =
         pane = atom.workspace.getActivePane()
         @installation.flow.onSkipInstall () =>
           atom.config.set 'autocomplete-python.useKite', false
-          Metrics.Tracker.trackEvent "skipped kite"
+          @track "skipped kite"
           pane.destroyActiveItem()
         pane.addItem @installation, index: 0
         pane.activateItemAtIndex 0
@@ -254,15 +258,16 @@ module.exports =
 
     Promise.all(promises).then ([autocompletePlus, kite]) =>
       if kite?
-        @kiteProvider = kite.mainModule.completions()
+        @kitePackage = kite.mainModule
+        @kiteProvider = @kitePackage.completions()
         getSuggestions = @kiteProvider.getSuggestions
         @kiteProvider.getSuggestions = (args...) =>
-          getSuggestions.apply(@kiteProvider, args)
-          .then (suggestions) =>
+          getSuggestions?.apply(@kiteProvider, args)
+          ?.then (suggestions) =>
             @lastKiteSuggestions = suggestions
             @kiteSuggested = suggestions?
             suggestions
-          .catch (err) =>
+          ?.catch (err) =>
             @lastKiteSuggestions = []
             @kiteSuggested = false
             throw err
@@ -300,7 +305,7 @@ module.exports =
       if @kiteProvider?
         if @lastKiteSuggestions?
           if suggestion in @lastKiteSuggestions
-            altSuggestion = @hasSameSuggestion(suggestion, @provider.lastSuggestions)
+            altSuggestion = @hasSameSuggestion(suggestion, @provider.lastSuggestions or [])
             if altSuggestion?
               @track 'used completion returned by Kite but also returned by Jedi', {
                 kiteHasDocumentation: @hasDocumentation(suggestion)
@@ -310,7 +315,7 @@ module.exports =
               @track 'used completion returned by Kite but not Jedi', {
                 kiteHasDocumentation: @hasDocumentation(suggestion)
               }
-          else if suggestion in @provider.lastSuggestions
+          else if @provider.lastSuggestions and  suggestion in @provider.lastSuggestions
             altSuggestion = @hasSameSuggestion(suggestion, @lastKiteSuggestions)
             if altSuggestion?
               @track 'used completion returned by Jedi but also returned by Kite', {
@@ -318,17 +323,37 @@ module.exports =
                 jediHasDocumentation: @hasDocumentation(suggestion)
               }
             else
-              @track 'used completion returned by Jedi but not Kite (whitelisted filepath)', {
-                jediHasDocumentation: @hasDocumentation(suggestion)
-              }
+              if @kitePackage.isEditorWhitelisted?
+                if @kitePackage.isEditorWhitelisted(editor)
+                  @track 'used completion returned by Jedi but not Kite (whitelisted filepath)', {
+                    jediHasDocumentation: @hasDocumentation(suggestion)
+                  }
+                else
+                  @track 'used completion returned by Jedi but not Kite (non-whitelisted filepath)', {
+                    jediHasDocumentation: @hasDocumentation(suggestion)
+                  }
+              else
+                @track 'used completion returned by Jedi but not Kite (whitelisted filepath)', {
+                  jediHasDocumentation: @hasDocumentation(suggestion)
+                }
           else
             @track 'used completion from neither Kite nor Jedi'
         else
-          @track 'used completion returned by Jedi but not Kite (not-whitelisted filepath)', {
-            jediHasDocumentation: @hasDocumentation(suggestion)
-          }
+          if @kitePackage.isEditorWhitelisted?
+            if @kitePackage.isEditorWhitelisted(editor)
+              @track 'used completion returned by Jedi but not Kite (whitelisted filepath)', {
+                jediHasDocumentation: @hasDocumentation(suggestion)
+              }
+            else
+              @track 'used completion returned by Jedi but not Kite (non-whitelisted filepath)', {
+                jediHasDocumentation: @hasDocumentation(suggestion)
+              }
+          else
+            @track 'used completion returned by Jedi but not Kite (not-whitelisted filepath)', {
+              jediHasDocumentation: @hasDocumentation(suggestion)
+            }
       else
-        if suggestion in @provider.lastSuggestions
+        if @provider.lastSuggestions and suggestion in @provider.lastSuggestions
           @track 'used completion returned by Jedi', {
             jediHasDocumentation: @hasDocumentation(suggestion)
           }
@@ -343,4 +368,11 @@ module.exports =
     (suggestion.descriptionMarkdown? and suggestion.descriptionMarkdown isnt '')
 
   track: (msg, data) ->
-    Metrics.Tracker.trackEvent msg, data
+    try
+      Metrics.Tracker.trackEvent msg, data
+    catch e
+      # TODO: this should be removed after kite-installer is fixed
+      if e instanceof TypeError
+        console.error(e)
+      else
+        throw e
