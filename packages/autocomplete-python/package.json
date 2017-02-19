@@ -2,39 +2,39 @@
   "_args": [
     [
       {
-        "raw": "/tmp/d-117113-7384-1c7dmla.rycq7rdx6r/package.tgz",
+        "raw": "/tmp/d-117119-3163-1q88xc2.9xwcr0y66r/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/tmp/d-117113-7384-1c7dmla.rycq7rdx6r/package.tgz",
-        "spec": "/tmp/d-117113-7384-1c7dmla.rycq7rdx6r/package.tgz",
+        "rawSpec": "/tmp/d-117119-3163-1q88xc2.9xwcr0y66r/package.tgz",
+        "spec": "/tmp/d-117119-3163-1q88xc2.9xwcr0y66r/package.tgz",
         "type": "local"
       },
-      "/tmp/apm-install-dir-117113-7384-yoghho.49csypsyvi"
+      "/tmp/apm-install-dir-117119-3163-1lwcai8.hj6x14te29"
     ]
   ],
-  "_from": "../d-117113-7384-1c7dmla.rycq7rdx6r/package.tgz",
-  "_id": "autocomplete-python@1.8.51",
+  "_from": "../d-117119-3163-1q88xc2.9xwcr0y66r/package.tgz",
+  "_id": "autocomplete-python@1.8.54",
   "_inCache": true,
   "_location": "/autocomplete-python",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/tmp/d-117113-7384-1c7dmla.rycq7rdx6r/package.tgz",
+    "raw": "/tmp/d-117119-3163-1q88xc2.9xwcr0y66r/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/tmp/d-117113-7384-1c7dmla.rycq7rdx6r/package.tgz",
-    "spec": "/tmp/d-117113-7384-1c7dmla.rycq7rdx6r/package.tgz",
+    "rawSpec": "/tmp/d-117119-3163-1q88xc2.9xwcr0y66r/package.tgz",
+    "spec": "/tmp/d-117119-3163-1q88xc2.9xwcr0y66r/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-117113-7384-1c7dmla.rycq7rdx6r/package.tgz",
-  "_shasum": "6a704a99ace520f14f44f47db4e8fd321390155a",
+  "_resolved": "file:../d-117119-3163-1q88xc2.9xwcr0y66r/package.tgz",
+  "_shasum": "407e0dc156b66d39680461d30cba379c7e74b056",
   "_shrinkwrap": null,
-  "_spec": "/tmp/d-117113-7384-1c7dmla.rycq7rdx6r/package.tgz",
-  "_where": "/tmp/apm-install-dir-117113-7384-yoghho.49csypsyvi",
+  "_spec": "/tmp/d-117119-3163-1q88xc2.9xwcr0y66r/package.tgz",
+  "_where": "/tmp/apm-install-dir-117119-3163-1lwcai8.hj6x14te29",
   "bugs": {
     "url": "https://github.com/autocomplete-python/autocomplete-python/issues"
   },
@@ -59,7 +59,7 @@
     "atom-slick": "^2.0.0",
     "atom-space-pen-views": "~2.1.0",
     "fuzzaldrin-plus": "^0.3.1",
-    "kite-installer": "^0.12.6",
+    "kite-installer": "^0.12.10",
     "mixpanel": "^0.5.0",
     "selector-kit": "^0.1",
     "space-pen": "^5.1.2",
@@ -99,7 +99,7 @@
     "type": "git",
     "url": "git+https://github.com/autocomplete-python/autocomplete-python.git"
   },
-  "version": "1.8.51",
+  "version": "1.8.54",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
@@ -175,7 +175,7 @@
       },
       {
         "name": "kite-installer",
-        "version": "0.12.7",
+        "version": "0.12.11",
         "path": "node_modules/kite-installer/lib/index.js"
       },
       {
@@ -847,7 +847,7 @@
           "atom-slick": "^2.0.0",
           "atom-space-pen-views": "~2.1.0",
           "fuzzaldrin-plus": "^0.3.1",
-          "kite-installer": "^0.12.6",
+          "kite-installer": "^0.12.10",
           "mixpanel": "^0.5.0",
           "selector-kit": "^0.1",
           "space-pen": "^5.1.2",

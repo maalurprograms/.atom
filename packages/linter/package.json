@@ -2,44 +2,44 @@
   "_args": [
     [
       {
-        "raw": "/tmp/d-117113-7390-1328fcn.owlikymn29/package.tgz",
+        "raw": "/tmp/d-117119-3169-a7n22i.l932chaor/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/tmp/d-117113-7390-1328fcn.owlikymn29/package.tgz",
-        "spec": "/tmp/d-117113-7390-1328fcn.owlikymn29/package.tgz",
+        "rawSpec": "/tmp/d-117119-3169-a7n22i.l932chaor/package.tgz",
+        "spec": "/tmp/d-117119-3169-a7n22i.l932chaor/package.tgz",
         "type": "local"
       },
-      "/tmp/apm-install-dir-117113-7390-sd58sk.hmg0zilik9"
+      "/tmp/apm-install-dir-117119-3169-1xnmunn.l01mqdunmi"
     ]
   ],
-  "_from": "../d-117113-7390-1328fcn.owlikymn29/package.tgz",
-  "_id": "linter@1.11.22",
+  "_from": "../d-117119-3169-a7n22i.l932chaor/package.tgz",
+  "_id": "linter@1.11.23",
   "_inCache": true,
   "_location": "/linter",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/tmp/d-117113-7390-1328fcn.owlikymn29/package.tgz",
+    "raw": "/tmp/d-117119-3169-a7n22i.l932chaor/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/tmp/d-117113-7390-1328fcn.owlikymn29/package.tgz",
-    "spec": "/tmp/d-117113-7390-1328fcn.owlikymn29/package.tgz",
+    "rawSpec": "/tmp/d-117119-3169-a7n22i.l932chaor/package.tgz",
+    "spec": "/tmp/d-117119-3169-a7n22i.l932chaor/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-117113-7390-1328fcn.owlikymn29/package.tgz",
-  "_shasum": "72312f0a80298a0929afdb841caf594c2bb0882a",
+  "_resolved": "file:../d-117119-3169-a7n22i.l932chaor/package.tgz",
+  "_shasum": "e5b6b42c0e7af49a560602916c5dcaa612603788",
   "_shrinkwrap": null,
-  "_spec": "/tmp/d-117113-7390-1328fcn.owlikymn29/package.tgz",
-  "_where": "/tmp/apm-install-dir-117113-7390-sd58sk.hmg0zilik9",
+  "_spec": "/tmp/d-117119-3169-a7n22i.l932chaor/package.tgz",
+  "_where": "/tmp/apm-install-dir-117119-3169-1xnmunn.l01mqdunmi",
   "author": {
-    "name": "atom-community"
+    "name": "steelbrain"
   },
   "bugs": {
-    "url": "https://github.com/atom-community/linter/issues"
+    "url": "https://github.com/steelbrain/linter/issues"
   },
   "consumedServices": {
     "linter": {
@@ -62,7 +62,7 @@
   "engines": {
     "atom": ">=1.13.0 <2.0.0"
   },
-  "homepage": "https://github.com/atom-community/linter#readme",
+  "homepage": "https://github.com/steelbrain/linter#readme",
   "license": "MIT",
   "main": "./lib/main",
   "name": "linter",
@@ -83,12 +83,12 @@
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/atom-community/linter.git"
+    "url": "git+https://github.com/steelbrain/linter.git"
   },
   "scripts": {
     "lint": "coffeelint lib && eslint lib"
   },
-  "version": "1.11.22",
+  "version": "1.11.23",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
