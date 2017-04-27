@@ -1,11 +1,17 @@
 "*":
   "atom-terminal":
     app: "/usr/bin/bash"
-  "autocomplete-python": {}
+  "autocomplete-python":
+    showTooltips: true
+    useSnippets: "required"
   autosave:
     enabled: true
   core:
     autoHideMenuBar: true
+    disabledPackages: [
+      "linter-flake8"
+      "linter"
+    ]
     projectHome: "/home/jonas/Projects"
     telemetryConsent: "limited"
     themes: [
@@ -34,6 +40,7 @@
       "highlight-selectedDecorationsZIndex": 0
   "platformio-ide-terminal":
     core: {}
+  "python-iresolve": {}
   "terminal-plus":
     core:
       shell: "/usr/bin/bash"
@@ -42,3 +49,6 @@
       autoClose: true
   welcome:
     showOnStartup: false
+".django.python.source":
+  editor:
+    autoIndent: false
